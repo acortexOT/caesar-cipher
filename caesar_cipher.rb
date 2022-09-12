@@ -4,9 +4,11 @@ def caesar_cipher(string, key = 1)
   cipher = %w(a b c d e f g h i g k l m n o p q r s t u v w x y z)
   array_before_cipher = string.split('')
   array_after_cipher = array_before_cipher.map do |char|
+   # Check for characters outside of alphabet to omit shifting
     if cipher.index(char.downcase) == nil
       char
-    else 
+    else
+    # Check for uppercase and keep return appropriate case
     key -= 26 if cipher.index(char.downcase) + key > 25
       if char.downcase == char
       cipher[cipher.index(char)+key]
